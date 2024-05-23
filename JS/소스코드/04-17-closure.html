@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <script>
+    //                      이벤트, 콜백함수
+    // window.addEventListener();
+    function f(){
+      let count = 0;
+      return function() {
+        count++;
+        return count;
+      }
+    }
+
+    const a = f();
+    window.addEventListener('blur', () => {
+      let c = a();
+      if(c > 5) close();
+      
+    });
+
+
+
+
+
+
+
+
+    // function sequence() {
+    //   let seq = 0;
+    //   return function () {
+    //     seq++;
+    //     return seq;
+    //   };
+    // }
+    // const check = sequence();
+    // window.addEventListener('blur', () => {
+    //   const count = check();
+    //   if (count > 5) {
+    //     alert('시험 종료!');
+    //     window.close();
+    //   }
+    // });
+  </script>
+
+</body>
+
+</html>

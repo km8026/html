@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="clock">
+
+  </div>
+  <script>
+    setInterval(run, 1000);
+    let count = 0;
+    function run(){
+      const date = new Date();
+      const h = date.getHours();
+      let m = date.getMinutes();
+      m = m < 10 ? '0' + m : m;
+      let s = date.getSeconds();
+      s = s < 10 ? '0' + s : s;
+      const clock = document.querySelector('#clock');
+      clock.innerHTML = `${h}:${m}:${s}`;
+    }
+    // 4초 뒤에 원하는 기능 실행
+    // setTimeout(show,40000);
+    // function show() { // callback functoin
+      // alert('Hello');
+    // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Kakao 지도 시작하기</title>
+</head>
+
+<body>
+  <div id="map" style="width:700px;height:600px;">
+  </div>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3be7c3bf7a9d9e28f824f78e1b348717">
+  </script>
+  <script>
+      navigator.geolocation.getCurrentPosition(pos => {
+      const lat = pos.coords.latitude;
+      const lng = pos.coords.longitude;
+
+      const container = document.getElementById('map');
+      const options = {
+        center: new kakao.maps.LatLng(lat, lng),
+        level: 2
+      };
+
+      const map = new kakao.maps.Map(container, options);
+      const markerPosition = new kakao.maps.LatLng(lat, lng);
+      const marker = new kakao.maps.Marker({
+        position: markerPosition
+      });
+      marker.setMap(map);
+
+      const mp = new kakao.maps.LatLng(lat - 0.01, lng);
+      const m = new kakao.maps.Marker({
+        position: mp
+      });
+      m.setMap(map);
+      
+          const iwContent = '<div style="padding:5px;">자바교육</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwPosition = new kakao.maps.LatLng(lat, lng+0.01), //인포윈도우 표시 위치입니다
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+      
+          // 인포윈도우를 생성하고 지도에 표시합니다
+          const infowindow = new kakao.maps.InfoWindow({
+            map: map, // 인포윈도우가 표시될 지도
+            position: iwPosition,
+            content: iwContent,
+            removable: iwRemoveable
+          });
+    });
+
+  </script>
+</body>
+
+</html>

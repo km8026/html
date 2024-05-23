@@ -1,0 +1,83 @@
+<style>
+  td {
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    font-size: x-large;
+    border: 2px solid black;
+  }
+
+  td:hover {
+    background-color: yellowgreen;
+  }
+
+  td.clicked {
+    background-color: aqua;
+
+  }
+</style>
+
+<body>
+  <script>
+    const bingo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //0.0 <= X < 1.0
+    const 변경될위치 = parseInt(Math.random() * bingo.length);
+    [bingo[0], bingo[변경될위치]] = [bingo[변경될위치], bingo[0]];
+
+    let clickedRows = Array(3).fill(0);
+    let clickedColumns = Array(3).fill(0);
+    let clickedDiagonals = Array(2).fill(0);
+
+
+
+    function handleClick(index) {
+
+
+      alert(bingo[index]);
+      document.getElementById('cell' + index).classList.add('clicked');
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      clickedRows[row]++;
+      clickedColumns[col]++;
+      if (row === col) clickedDiagonals[0]++;
+      if (row + col === 2) clickedDiagonals[1]++;
+
+      // 빙고 확인
+      const isBingo = checkBingo();
+      if (isBingo) {
+        // for(
+
+        // )
+        alert("빙고!");
+      }
+    }
+
+    function checkBingo() {
+      if (clickedRows.includes(3) || clickedColumns.includes(3) || clickedDiagonals.includes(3)) {
+        return true;
+      }
+      if (clickedRows.every(count => count === 3) || clickedColumns.every(count => count === 3) || clickedDiagonals.every(count => count === 3)) {
+        return true;
+      }
+      return false;
+    }
+
+    let code = '<table>';
+    for (let i = 0; i < bingo.length; i++) {
+      if (i % 3 == 0) {
+        code += '<tr>';
+      }
+      // code += `<td onclick = "alert(${bingo[i]})">${bingo[i]}</td>`;
+      code += `<td id="cell${i}" onclick="handleClick(${i})">${bingo[i]}</td>`;
+     
+    }
+    code += '</table>'
+    const show = document.querySelector('body')
+    show.innerHTML = (code)
+
+
+
+
+
+  </script>
+</body>
