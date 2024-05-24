@@ -22,6 +22,13 @@
       new Student('D', 40, false, 66),
       new Student('E', 18, true, 90),
     ];
+    const a2 = students.filter((value)=>{
+      return value.score >= 50;
+    })
+    const a = a2.map((value) =>{
+      return value.name
+    });
+    console.log(a);
   </script>
 </body>
 

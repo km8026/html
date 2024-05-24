@@ -20,6 +20,9 @@
         setTimeout(
           () => resolve(`${egg} >> 🍳`), 1000);
       });
+      // const a = getHen();
+      // const b = a.then();
+
     getHen()
       .then(hen => getEgg(hen))
       .then(egg => cook(egg))

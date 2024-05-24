@@ -7,15 +7,20 @@
   <script>
     const animals = ['🐶', '🐱', '🐷', '🐵', '🦝', '🐰'];
 
-    animals.pop();
+    console.log(animals);
+    const last = animals.pop();
+    console.log(last);
+    console.log(animals);
+    
+    const first = animals.shift();
+    console.log(first);
     console.log(animals);
 
-    animals.shift();
+    delete animals[2];
     console.log(animals);
 
-    animals.unshift('🐔');
-    console.log(animals);
-  </script>
+    
+    </script>
 </body>
 
 </html>

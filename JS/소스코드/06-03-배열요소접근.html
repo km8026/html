@@ -6,22 +6,46 @@
 <body>
   <script>
     const animals = ['🐶', '🐱', '🐷'];
-
-    for(const key in animals) {
-      console.log(key);
+    animals['a'] = '❤️ 😍 👌 '
+    // 1번 정석
+    for(let i = 0; i<animals.length; i++){
+      console.log(animals[i]);
     }
-
-    for(const value of animals) {
+    // 2번 key를 알아낸 후 value 출력
+    for(let key in animals){
+      console.log(animals[key]);
+    }
+    // 3번 key외 관계없이 value를 직접 얻어내기
+    for(let value of animals){
       console.log(value);
     }
+    // 4번 배열의 API 활용
+    // 배열의 요소 개수 : forEach
+    animals.forEach((a) => { 
+      console.log(a);
+    });
+    const list = animals.filter((v,i) => {
+      return i >= 1;
+    });
+    console.log(list);
 
-    animals.forEach(function(animal, index, array) {
-      console.log(`${animal} | ${index} | ${array}`);
-    });
+
+
+    // for(const key in animals) {
+    //   console.log(key);
+    // }
+
+    // for(const value of animals) {
+    //   console.log(value);
+    // }
+
+    // animals.forEach(function(animal, index, array) {
+    //   console.log(`${animal} | ${index} | ${array}`);
+    // });
     
-    animals.forEach((animal, index, array) => {
-      console.log(`${animal} | ${index} | ${array}`);
-    });
+    // animals.forEach((animal, index, array) => {
+    //   console.log(`${animal} | ${index} | ${array}`);
+    // });
   </script>
 </body>
 
